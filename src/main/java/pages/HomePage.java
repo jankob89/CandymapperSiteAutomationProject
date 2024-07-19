@@ -1,107 +1,81 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
-
 
 public class HomePage extends BaseComponent {
     public HomePage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
-        closePopupWidget();
     }
 
-    @FindBy(id = "popup-widget111379-close-icon")
-    WebElement btnPopupClose;
-    @FindBy(css = "span[id*=\"membership-icon\"]")
-    WebElement menuMembershipIcon;
-    @FindBy(css = "ul[id*=\"membershipId-loggedout\"] li:nth-child(1) a")
-    WebElement menuSignInLink;
-    @FindBy(css = "h1[id*=\"dynamic-tagline\"]")
-    WebElement header;
-    @FindBy(id = "tCounty")
-    WebElement dropdownCounty;
-    @FindBy(css = "div[id=\"bs-6\"] span iframe")
-    WebElement iFrame;
-    @FindBy(css = "div[class=\"widget widget-contact widget-contact-contact-2\"] " +
-            "div[data-aid=\"CONTACT_FORM_NAME\"] input")
-    WebElement txtNameInContactForm;
-    @FindBy(css = "div[class=\"widget widget-contact widget-contact-contact-2\"] " +
-            "div[data-aid=\"CONTACT_FORM_EMAIL\"] input")
-    WebElement txtEmailInContactForm;
-    @FindBy(css = "div[class=\"widget widget-contact widget-contact-contact-2\"] " +
-            "textarea[data-aid=\"CONTACT_FORM_MESSAGE\"]")
-    WebElement txtMessageInContactForm;
-    @FindBy(css = "div[class=\"widget widget-contact widget-contact-contact-2\"] button")
-    WebElement btnSendInContactForm;
-    @FindBy(css = "div[data-aid=\"CONTACT_FORM_SUBMIT_SUCCESS_MESSAGE\"] span")
-    WebElement lblSubmitSuccessMsg;
-    @FindBy(css = "div[id=\"bs-6\"]")
-    WebElement sectionWithIFrame;
+    protected final By btnPopupClose = By.cssSelector("svg[id*=\"popup-widget\"]");
+    protected final By menuMembershipIcon = By.cssSelector("span[id*=\"membership-icon\"]");
+    protected final By menuSignInLink = By.cssSelector("ul[id*=\"membershipId-loggedout\"] li:nth-child(1) a");
+    protected final By header = By.cssSelector("h1[id*=\"dynamic-tagline\"]");
+    protected final By dropdownCounty = By.id("tCounty");
+    protected final By iFrame = By.cssSelector("div[id=\"bs-6\"] span iframe");
+    protected final By txtNameInContactForm = By.cssSelector("div[class=\"widget widget-contact widget-contact-contact-2\"] " +
+            "div[data-aid=\"CONTACT_FORM_NAME\"] input");
+    protected final By txtEmailInContactForm = By.cssSelector("div[class=\"widget widget-contact widget-contact-contact-2\"] " +
+            "div[data-aid=\"CONTACT_FORM_EMAIL\"] input");
+    protected final By txtMessageInContactForm = By.cssSelector("div[class=\"widget widget-contact widget-contact-contact-2\"] " +
+            "textarea[data-aid=\"CONTACT_FORM_MESSAGE\"]");
+    protected final By btnSendInContactForm = By.cssSelector("div[class=\"widget widget-contact widget-contact-contact-2\"] button");
+    protected final By lblSubmitSuccessMsg = By.cssSelector("div[data-aid=\"CONTACT_FORM_SUBMIT_SUCCESS_MESSAGE\"] span");
+    protected final By sectionWithIFrame = By.cssSelector("div[id=\"bs-6\"]");
 
     public void closePopupWidget() {
-        if (btnPopupClose.isDisplayed()) {
-            btnPopupClose.click();
-        }
+        clickElement(btnPopupClose);
     }
 
     public void openNestedSideMenuMembership() {
-        menuMembershipIcon.click();
+        clickElement(menuMembershipIcon);
     }
 
     public SignInPage goToMyAccountPage() {
-        menuSignInLink.click();
+        clickElement(menuSignInLink);
         return new SignInPage(driver);
     }
 
     public String getHeaderText() {
-        return header.getText();
+        return findElement(header).getText();
     }
 
     public void selectCountyByValue(String value) {
-        Actions action = new Actions(driver);
-        action.moveToElement(sectionWithIFrame).perform();
-        driver.switchTo().frame(iFrame);
-        Select select = new Select(dropdownCounty);
+        moveToElementUsingActionsClass(sectionWithIFrame);
+        driver.switchTo().frame(findElement(iFrame));
+        Select select = new Select(findElement(dropdownCounty));
         select.selectByValue(value);
         driver.switchTo().defaultContent();
     }
 
     public String getSelectedCounty() {
-        driver.switchTo().frame(iFrame);
-        Select select = new Select(dropdownCounty);
+        driver.switchTo().frame(findElement(iFrame));
+        Select select = new Select(findElement(dropdownCounty));
         String selectedOption = select.getFirstSelectedOption().getText();
         driver.switchTo().defaultContent();
         return selectedOption;
     }
 
     public void enterName(String name) {
-        Actions action = new Actions(driver);
-        action.moveToElement(txtNameInContactForm).click().sendKeys(name).perform();
+        enterTextUsingActionsClass(txtNameInContactForm, name);
     }
 
     public void enterEmail(String email) {
-        Actions action = new Actions(driver);
-        action.moveToElement(txtEmailInContactForm).click().sendKeys(email).perform();
+        enterTextUsingActionsClass(txtEmailInContactForm, email);
     }
 
     public void enterMessage(String message) {
-        Actions action = new Actions(driver);
-        action.moveToElement(txtMessageInContactForm).click().sendKeys(message).perform();
+        enterTextUsingActionsClass(txtMessageInContactForm, message);
     }
 
-    public void clickBtnSend() throws InterruptedException {
-        Actions action = new Actions(driver);
-        Thread.sleep(3000);
-        action.moveToElement(btnSendInContactForm).click().perform();
+    public void clickBtnSend() {
+        threadSleep(3000);
+        clickElementUsingActionsClass(btnSendInContactForm);
     }
 
     public String getSubmitSuccessMsg() {
-        return lblSubmitSuccessMsg.getText();
+        return findElement(lblSubmitSuccessMsg).getText();
     }
 
 }

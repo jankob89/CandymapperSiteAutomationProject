@@ -1,56 +1,47 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage extends BaseComponent {
 
     public SignInPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
-    @FindBy(css = "input[data-aid=\"MEMBERSHIP_SSO_LOGIN_EMAIL\"]")
-    WebElement txtEmail;
-    @FindBy(css = "input[data-aid=\"MEMBERSHIP_SSO_LOGIN_PASSWORD\"]")
-    WebElement txtPassword;
-    @FindBy(css = "button[data-aid=\"MEMBERSHIP_SSO_SUBMIT\"]")
-    WebElement btnSignIn;
-    @FindBy(css = "p[data-aid=\"MEMBERSHIP_SSO_ERR_REND\"]")
-    WebElement lblInvalidMailPass;
-    @FindBy(css = "form[data-aid=\"MEMBERSHIP_SSO_FORM_REND\"] div:nth-child(1) p")
-    WebElement lblEmptyEmail;
-    @FindBy(css = "form[data-aid=\"MEMBERSHIP_SSO_FORM_REND\"] div:nth-child(2) p")
-    WebElement lblEmptyPassword;
+    protected final By txtEmail = By.cssSelector("input[data-aid=\"MEMBERSHIP_SSO_LOGIN_EMAIL\"]");
+    protected final By txtPassword = By.cssSelector("input[data-aid=\"MEMBERSHIP_SSO_LOGIN_PASSWORD\"]");
+    protected final By btnSignIn = By.cssSelector("button[data-aid=\"MEMBERSHIP_SSO_SUBMIT\"]");
+    protected final By lblInvalidMailPass = By.cssSelector("p[data-aid=\"MEMBERSHIP_SSO_ERR_REND\"]");
+    protected final By lblEmptyEmail = By.cssSelector("form[data-aid=\"MEMBERSHIP_SSO_FORM_REND\"] div:nth-child(1) p");
+    protected final By lblEmptyPassword = By.cssSelector("form[data-aid=\"MEMBERSHIP_SSO_FORM_REND\"] div:nth-child(2) p");
 
     public void enterEmail(String email) {
-        txtEmail.sendKeys(email);
+        enterText(txtEmail, email);
     }
 
     public void enterPassword(String password) {
-        txtPassword.sendKeys(password);
+        enterText(txtPassword, password);
     }
 
     public void clickSignInBtn() {
-        btnSignIn.click();
+        clickElement(btnSignIn);
     }
 
     public MyAccountPage signInWithCorrectData() {
-        btnSignIn.click();
+        clickElement(btnSignIn);
         return new MyAccountPage(driver);
     }
 
     public String getInvalidEmailPassText() {
-        return lblInvalidMailPass.getText();
+        return findElement(lblInvalidMailPass).getText();
     }
 
     public String getEmptyEmailMsg() {
-        return lblEmptyEmail.getText();
+        return findElement(lblEmptyEmail).getText();
     }
 
     public String getEmptyPasswordMsg() {
-        return lblEmptyPassword.getText();
+        return findElement(lblEmptyPassword).getText();
     }
 }

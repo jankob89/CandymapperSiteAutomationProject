@@ -17,7 +17,11 @@ X
 (src/main/java/factory/DriverFactory.java,1\d\1d6f52e3ad5c2893360a13b37783ff9614de5f53
 V
 &src/main/java/pages/BaseComponent.java,2\2\220ae4cd697662e4369b5e90dd4ec1c9450fe236
-S
-#src/test/java/tests/BasicTests.java,a\c\ac388a4888aceac972d3dc310817011e5314284b
 Q
 !src/test/java/tests/AllTests.java,a\9\a954b96bf88577e7caf2112702b723ef72c7b686
+U
+%src/main/java/testinit/BaseTests.java,5\8\589a02768af8ea7ab88d0024d81292e3d1f15bd3
+X
+(src/main/java/factory/DriverManager.java,9\4\941a772700616b7b21965a1320897c98839e4d84
+=
+All tests.xml,5\2\5271c93b267955fba2a7f27c6c0e40547748ea46

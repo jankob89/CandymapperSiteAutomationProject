@@ -8,17 +8,17 @@ public class DriverManager {
 		throw new IllegalStateException("DriverManager class");
 	}
 
-	private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
+	private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
-	public static WebDriver get() {
-		return DRIVER.get();
+	public static WebDriver getDriver() {
+		return tlDriver.get();
 	}
 
-	public static void set(WebDriver driver) {
-		DRIVER.set(driver);
+	public static void setDriver(WebDriver driver) {
+		tlDriver.set(driver);
 	}
 
-	public static void unload() {
-		DRIVER.remove();
+	public static void removeDriver() {
+		tlDriver.remove();
 	}
 }

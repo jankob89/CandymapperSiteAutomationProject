@@ -1,5 +1,6 @@
 package tests;
 
+import factory.DriverManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -17,14 +18,16 @@ public class AllTests extends BaseTests {
 
     @Test
     public void selectWorcestershireCountyFromSlider() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(DriverManager.getDriver());
+        homePage.closePopupWidget();
         homePage.selectCountyByValue("SC");
         Assert.assertEquals(homePage.getSelectedCounty(), "Worcestershire");
     }
 
     @Test (priority = 1)
-    public void sendMessageWithCorrectData() throws InterruptedException {
-        HomePage homePage = new HomePage(driver);
+    public void sendMessageWithCorrectData() {
+        HomePage homePage = new HomePage(DriverManager.getDriver());
+        homePage.closePopupWidget();
         homePage.enterName(username);
         homePage.enterEmail(email);
         homePage.enterMessage("Random message");
@@ -36,7 +39,8 @@ public class AllTests extends BaseTests {
 
     @Test (priority = 2)
     public void signInWithCorrectData() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(DriverManager.getDriver());
+        homePage.closePopupWidget();
         homePage.openNestedSideMenuMembership();
         SignInPage signInPage = homePage.goToMyAccountPage();
         signInPage.enterEmail(email);
@@ -47,7 +51,8 @@ public class AllTests extends BaseTests {
 
     @Test (priority = 3)
     public void signOut() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(DriverManager.getDriver());
+        homePage.closePopupWidget();
         homePage.openNestedSideMenuMembership();
         SignInPage signInPage = homePage.goToMyAccountPage();
         signInPage.enterEmail(email);
@@ -61,7 +66,8 @@ public class AllTests extends BaseTests {
 
     @Test (priority = 4)
     public void signInWithIncorrectData() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(DriverManager.getDriver());
+        homePage.closePopupWidget();
         homePage.openNestedSideMenuMembership();
         SignInPage signInPage = homePage.goToMyAccountPage();
         signInPage.enterEmail("invalid_email@mail.com");
@@ -73,7 +79,8 @@ public class AllTests extends BaseTests {
 
     @Test (priority = 5)
     public void signInWithoutData() {
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage(DriverManager.getDriver());
+        homePage.closePopupWidget();
         homePage.openNestedSideMenuMembership();
         SignInPage signInPage = homePage.goToMyAccountPage();
         signInPage.clickSignInBtn();
