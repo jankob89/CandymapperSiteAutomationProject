@@ -10,34 +10,12 @@ import pages.SignInPage;
 import testinit.BaseTests;
 import util.ConfigReader;
 
-public class AllTests extends BaseTests {
+public class SignInOutTests extends BaseTests {
 
-    String email = ConfigReader.getProperty("email");
-    String password = ConfigReader.getProperty("password");
-    String username = ConfigReader.getProperty("username");
-
+    private final String email = ConfigReader.getProperty("email");
+    private final String password = ConfigReader.getProperty("password");
+    private final String username = ConfigReader.getProperty("username");
     @Test
-    public void selectWorcestershireCountyFromSlider() {
-        HomePage homePage = new HomePage(DriverManager.getDriver());
-        homePage.closePopupWidget();
-        homePage.selectCountyByValue("SC");
-        Assert.assertEquals(homePage.getSelectedCounty(), "Worcestershire");
-    }
-
-    @Test (priority = 1)
-    public void sendMessageWithCorrectData() {
-        HomePage homePage = new HomePage(DriverManager.getDriver());
-        homePage.closePopupWidget();
-        homePage.enterName(username);
-        homePage.enterEmail(email);
-        homePage.enterMessage("Random message");
-        homePage.clickBtnSend();
-        Assert.assertEquals(homePage.getSubmitSuccessMsg(),
-               "Thank you for your inquiry! We will get back to you within 48 hours.");
-
-    }
-
-    @Test (priority = 2)
     public void signInWithCorrectData() {
         HomePage homePage = new HomePage(DriverManager.getDriver());
         homePage.closePopupWidget();
@@ -49,7 +27,7 @@ public class AllTests extends BaseTests {
         Assert.assertEquals(myAccountPage.getHeaderText(), "Hello " + username);
     }
 
-    @Test (priority = 3)
+    @Test (priority = 1, dependsOnMethods = "signInWithCorrectData")
     public void signOut() {
         HomePage homePage = new HomePage(DriverManager.getDriver());
         homePage.closePopupWidget();
@@ -64,7 +42,7 @@ public class AllTests extends BaseTests {
                 "The Website That Goes Wrong!");
     }
 
-    @Test (priority = 4)
+    @Test (priority = 2)
     public void signInWithIncorrectData() {
         HomePage homePage = new HomePage(DriverManager.getDriver());
         homePage.closePopupWidget();
@@ -77,7 +55,7 @@ public class AllTests extends BaseTests {
                 "The password/email address combo is incorrect.");
     }
 
-    @Test (priority = 5)
+    @Test (priority = 3)
     public void signInWithoutData() {
         HomePage homePage = new HomePage(DriverManager.getDriver());
         homePage.closePopupWidget();
