@@ -4,15 +4,22 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import testinit.BaseTests;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.List;
 
-public class BaseComponent extends BaseTests {
+public class BaseComponent {
 
     public BaseComponent(WebDriver driver) {
         this.driver = driver;
     }
+
+    protected WebDriver driver;
     private static final int DEFAULT_DURATION = 5;
 
     /**
@@ -22,6 +29,15 @@ public class BaseComponent extends BaseTests {
     public WebElement findElement(By by) {
         visibilityOf(by);
         return driver.findElement(by);
+    }
+
+    /**
+     * Find and return list of web elements
+     * @param by element locator
+     */
+    public List<WebElement> findElements(By by) {
+        visibilityOf(by);
+        return driver.findElements(by);
     }
 
     /**
@@ -47,7 +63,7 @@ public class BaseComponent extends BaseTests {
 
     /**
      * Enter text to web element
-     * @param by element locator
+     * @param by   element locator
      * @param text text to enter into web element
      */
     public void enterText(By by, String text) {
@@ -57,7 +73,7 @@ public class BaseComponent extends BaseTests {
 
     /**
      * Enter text to web element using Actions class
-     * @param by element locator
+     * @param by   element locator
      * @param text text to enter into web element
      */
     public void enterTextUsingActionsClass(By by, String text) {
@@ -120,6 +136,20 @@ public class BaseComponent extends BaseTests {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    public int getStatusCode(String href) {
+        int responseStatusCode = 0;
+        try {
+            URL url = new URI(href).toURL();
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
+            responseStatusCode = conn.getResponseCode();
+        } catch (URISyntaxException | IOException e) {
+            e.printStackTrace();
+        }
+        return responseStatusCode;
     }
 
     public void visibilityOf(By by, int duration) {

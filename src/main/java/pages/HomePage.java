@@ -1,7 +1,12 @@
 package pages;
 
+import helepers.objects.LinkAndStatus;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import util.ConfigReader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomePage extends BaseComponent {
     public HomePage(WebDriver driver) {
@@ -78,4 +83,20 @@ public class HomePage extends BaseComponent {
         return findElement(lblSubmitSuccessMsg).getText();
     }
 
+    private final By navFooter = By.cssSelector("ul[data-ux=\"NavFooter\"] li a");
+
+    public List<LinkAndStatus> getFooterLinksAndStatusList() {
+        List<String> footerLinksList = findElements(navFooter).stream()
+                .map(el -> el.getAttribute("href"))
+                .toList();
+        List<LinkAndStatus> linksAndStatusesList = new ArrayList<>();
+        int i = 0;
+        while (i < footerLinksList.size()) {
+            LinkAndStatus linkAndStatus = new LinkAndStatus(footerLinksList.get(i),
+                    getStatusCode(footerLinksList.get(i)));
+            linksAndStatusesList.add(linkAndStatus);
+            i++;
+        }
+        return linksAndStatusesList;
+    }
 }

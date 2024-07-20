@@ -6,8 +6,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import util.ConfigReader;
 
-import java.time.Duration;
-
 public class DriverFactory {
     private DriverFactory() {
         throw new IllegalStateException("DriverFactory class");
@@ -23,7 +21,6 @@ public class DriverFactory {
             case "edge" -> driver = new EdgeDriver();
             default -> throw new IllegalArgumentException("Unexpected value: " + browser);
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         return driver;

@@ -7,6 +7,7 @@ import pages.HomePage;
 import testinit.BaseTests;
 
 public class DropdownCountyTests extends BaseTests {
+
     @Test
     public void selectWorcestershireCountyFromDropdown() {
         HomePage homePage = new HomePage(DriverManager.getDriver());

@@ -8,12 +8,10 @@ import org.testng.annotations.BeforeMethod;
 import util.ConfigReader;
 
 public class BaseTests {
-    protected WebDriver driver;
 
     @BeforeMethod
     public void initializeDriver() {
         DriverManager.setDriver(DriverFactory.createDriverInstance());
-        //driver = DriverFactory.createDriverInstance();
         DriverManager.getDriver().get(ConfigReader.getProperty("url"));
     }
 
@@ -21,6 +19,5 @@ public class BaseTests {
     public void tearDown() {
         DriverManager.getDriver().quit();
         DriverManager.removeDriver();
-        //driver.quit();
     }
 }

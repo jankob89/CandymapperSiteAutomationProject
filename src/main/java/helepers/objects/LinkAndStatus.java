@@ -1,2 +1,3 @@
-package helepers.objects;public class LinkAndStatus {
-}
+package helepers.objects;
+
+public record LinkAndStatus(String href, int responseCode) {}
