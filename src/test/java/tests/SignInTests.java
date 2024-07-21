@@ -10,7 +10,7 @@ import pages.SignInPage;
 import testinit.BaseTests;
 import util.ConfigReader;
 
-public class LoggingTests extends BaseTests {
+public class SignInTests extends BaseTests {
 
     private final String email = ConfigReader.getProperty("email");
     private final String password = ConfigReader.getProperty("password");

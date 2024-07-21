@@ -31,3 +31,13 @@ T
 $src/test/java/tests/FooterTests.java,3\c\3c6f0c47603cb023e5ceaa0079ef346ea63f7b2f
 a
 1src/main/java/helepers/objects/LinkAndStatus.java,5\5\556b4293737fc6238fb2ab9e1f72468a14d81ab5
+S
+#src/main/java/listner/Listener.java,3\c\3cb0b682624187c971f3b80ca0255fb7dd420b7e
+T
+$src/main/java/listener/Listener.java,c\b\cb73c6c09d2c9d58f3c9fbd9ca3e035bac38aa93
+S
+#testsuites/All tests - parallel.xml,0\3\032d19bbf7a0f9b274e49d41ee97340c107dc8ee
+H
+testsuites/All tests.xml,3\e\3ec452d84a6c829136a134e649f3c3ade4ba9efd
+T
+$src/test/java/tests/SignInTests.java,a\1\a14a52f6a029de43f5fa22ba1ab19757d0ea1b02
