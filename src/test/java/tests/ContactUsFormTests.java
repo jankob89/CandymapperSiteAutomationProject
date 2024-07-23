@@ -11,6 +11,7 @@ public class ContactUsFormTests extends BaseTests {
 
     private final String email = ConfigReader.getProperty("email");
     private final String username = ConfigReader.getProperty("username");
+
     @Test
     public void sendMessageWithCorrectData() {
         HomePage homePage = new HomePage(DriverManager.getDriver());

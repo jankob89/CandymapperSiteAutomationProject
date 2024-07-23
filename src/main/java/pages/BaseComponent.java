@@ -128,16 +128,20 @@ public class BaseComponent {
     /**
      * Causes the currently executing thread to sleep (temporarily cease execution) for the specified
      * number of milliseconds
-     * @param milliseconds number of milliseconds to sleep thread
+     * @param time number of milliseconds to sleep thread
      */
-    public void threadSleep(int milliseconds) {
+    public void threadSleep(int time) {
         try {
-            Thread.sleep(milliseconds);
+            Thread.sleep(time);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
     }
 
+    /**
+     * Return url response status code
+     * @param href site url
+     */
     public int getStatusCode(String href) {
         int responseStatusCode = 0;
         try {

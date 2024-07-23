@@ -15,6 +15,7 @@ public class SignInTests extends BaseTests {
     private final String email = ConfigReader.getProperty("email");
     private final String password = ConfigReader.getProperty("password");
     private final String username = ConfigReader.getProperty("username");
+
     @Test
     public void signInWithCorrectData() {
         HomePage homePage = new HomePage(DriverManager.getDriver());

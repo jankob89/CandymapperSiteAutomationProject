@@ -19,22 +19,14 @@ U
 %src/main/java/testinit/BaseTests.java,5\8\589a02768af8ea7ab88d0024d81292e3d1f15bd3
 X
 (src/main/java/factory/DriverManager.java,9\4\941a772700616b7b21965a1320897c98839e4d84
-=
-All tests.xml,5\2\5271c93b267955fba2a7f27c6c0e40547748ea46
 [
 +src/test/java/tests/ContactUsFormTests.java,a\b\ab38a6456af8756547878399fc4f5c8241c407dd
 \
 ,src/test/java/tests/DropdownCountyTests.java,8\d\8d1a73996765a61d37c51a4cf7d83505927e7a3d
-U
-%src/test/java/tests/LoggingTests.java,2\f\2f6a37c23f86a80fa15b112484ee66d8b104ad6b
 T
 $src/test/java/tests/FooterTests.java,3\c\3c6f0c47603cb023e5ceaa0079ef346ea63f7b2f
 a
 1src/main/java/helepers/objects/LinkAndStatus.java,5\5\556b4293737fc6238fb2ab9e1f72468a14d81ab5
-S
-#src/main/java/listner/Listener.java,3\c\3cb0b682624187c971f3b80ca0255fb7dd420b7e
-T
-$src/main/java/listener/Listener.java,c\b\cb73c6c09d2c9d58f3c9fbd9ca3e035bac38aa93
 S
 #testsuites/All tests - parallel.xml,0\3\032d19bbf7a0f9b274e49d41ee97340c107dc8ee
 H

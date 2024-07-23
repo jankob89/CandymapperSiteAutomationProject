@@ -10,7 +10,6 @@ public class ConfigReader {
     }
 
     private static Properties getProperties() {
-
         File file = new File(System.getProperty("user.dir") + "\\src\\main\\java\\config\\config.properties");
         Properties properties = new Properties();
         try (FileInputStream fileInputStream = new FileInputStream(file)) {

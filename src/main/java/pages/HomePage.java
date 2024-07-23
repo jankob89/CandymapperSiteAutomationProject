@@ -3,7 +3,6 @@ package pages;
 import helepers.objects.LinkAndStatus;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-import util.ConfigReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,7 @@ public class HomePage extends BaseComponent {
     protected final By btnSendInContactForm = By.cssSelector("div[class=\"widget widget-contact widget-contact-contact-2\"] button");
     protected final By lblSubmitSuccessMsg = By.cssSelector("div[data-aid=\"CONTACT_FORM_SUBMIT_SUCCESS_MESSAGE\"] span");
     protected final By sectionWithIFrame = By.cssSelector("div[id=\"bs-6\"]");
+    private final By navFooter = By.cssSelector("ul[data-ux=\"NavFooter\"] li a");
 
     public void closePopupWidget() {
         clickElement(btnPopupClose);
@@ -82,8 +82,6 @@ public class HomePage extends BaseComponent {
     public String getSubmitSuccessMsg() {
         return findElement(lblSubmitSuccessMsg).getText();
     }
-
-    private final By navFooter = By.cssSelector("ul[data-ux=\"NavFooter\"] li a");
 
     public List<LinkAndStatus> getFooterLinksAndStatusList() {
         List<String> footerLinksList = findElements(navFooter).stream()

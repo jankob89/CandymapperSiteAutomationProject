@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import util.ConfigReader;
 
 public class DriverFactory {
+
     private DriverFactory() {
         throw new IllegalStateException("DriverFactory class");
     }
