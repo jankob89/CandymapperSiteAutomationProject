@@ -3,8 +3,6 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 T
 $src/main/java/util/ConfigReader.java,b\c\bc9898b408e917717dd7afa7c2c9e18439d1f784
-V
-&src/main/java/config/config.properties,f\3\f3688771251717fd8a4703a40ac5932449c0d52b
 S
 #src/main/java/pages/SignInPage.java,e\a\ea2d8c62f60d3b6e20d6bc3e4d53a997922c9337
 V
@@ -33,3 +31,5 @@ H
 testsuites/All tests.xml,3\e\3ec452d84a6c829136a134e649f3c3ade4ba9efd
 T
 $src/test/java/tests/SignInTests.java,a\1\a14a52f6a029de43f5fa22ba1ab19757d0ea1b02
+A
+config.properties,5\b\5b4197fb87e6e5ff44afbf358a3bd23a35f56456

@@ -18,7 +18,7 @@ public class FooterTests extends BaseTests {
         List<LinkAndStatus> links = homePage.getFooterLinksAndStatusList();
         SoftAssert softAssert = new SoftAssert();
         links.forEach(l -> softAssert.assertTrue(l.responseCode() < 300 && l.responseCode() >= 200,
-                "Wrong response status for: " + l.href() + " response status: " + l.responseCode()));
+                "Wrong response status " + l.responseCode() + " for " + l.href()));
         softAssert.assertAll();
     }
 }
